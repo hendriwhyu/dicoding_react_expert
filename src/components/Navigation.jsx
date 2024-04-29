@@ -10,7 +10,7 @@ function Navigation({ authUser, signOut }) {
     <nav className="navbar bg-primary text-white fixed top-0 z-[100]">
       <div className="navbar-start">
         <div className="dropdown">
-          <div className="btn btn-ghost btn-circle">
+          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -26,7 +26,10 @@ function Navigation({ authUser, signOut }) {
               />
             </svg>
           </div>
-          <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 text-black rounded-box w-52">
+          <ul
+            tabIndex="-1"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 text-black rounded-box w-52"
+          >
             <li>
               <Link to="/">Thread</Link>
             </li>
