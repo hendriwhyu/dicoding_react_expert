@@ -12,12 +12,10 @@ import { asyncPopulateUsersAndThreads } from '../states/shared/thunk';
 import { clearCategories, setCategories } from '../states/category/slice';
 
 function ThreadPage() {
-  const {
-    threads = [],
-    users = [],
-    categories = [],
-    authUser,
-  } = useSelector((states) => states);
+  const threads = useSelector((states) => states.threads);
+  const users = useSelector((states) => states.users);
+  const categories = useSelector((states) => states.categories);
+  const authUser = useSelector((states) => states.authUser);
 
   const dispatch = useDispatch();
 
@@ -38,7 +36,7 @@ function ThreadPage() {
   };
 
   const onClickTag = (tags) => {
-    dispatch(setCategories({ categories: tags }));
+    dispatch(setCategories(tags));
   };
 
   const onUnclickTag = () => {

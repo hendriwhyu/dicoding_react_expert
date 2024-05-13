@@ -1,6 +1,9 @@
 import React from 'react';
 import {
-  BiDislike, BiLike, BiSolidDislike, BiSolidLike,
+  BiDislike,
+  BiLike,
+  BiSolidDislike,
+  BiSolidLike,
 } from 'react-icons/bi';
 import { BsReply } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
@@ -73,7 +76,7 @@ function ThreadItem(props) {
             <h3>{postedAt(createdAt)}</h3>
           </div>
         </div>
-        <p>{parser(body)}</p>
+        <div>{parser(body)}</div>
         <div className="flex flex-row">
           <span className="bg-primary text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded align-center">
             {`#${category}`}
@@ -131,13 +134,8 @@ export const threadItemShape = {
 
 ThreadItem.propTypes = {
   ...threadItemShape,
-  like: PropTypes.func,
-  dislike: PropTypes.func,
-};
-
-ThreadItem.defaultProps = {
-  like: null,
-  dislike: null,
+  like: PropTypes.func.isRequired,
+  dislike: PropTypes.func.isRequired,
 };
 
 export default ThreadItem;

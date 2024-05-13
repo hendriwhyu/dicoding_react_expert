@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
+    'cypress/globals': true,
   },
   extends: 'airbnb',
   overrides: [
@@ -20,6 +21,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
+  plugins: ['react', 'react-hooks', 'cypress'],
   rules: {
     'linebreak-style': 'off',
     'no-alert': 'off',

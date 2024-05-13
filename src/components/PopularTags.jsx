@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Tags from './Tags';
 
 function PopularTags({ tags, clickTag, unclickTag }) {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -18,16 +19,12 @@ function PopularTags({ tags, clickTag, unclickTag }) {
       <p>Kategori Popular</p>
       <div className="flex flex-row gap-3 flex-wrap">
         {tags?.values?.map((tag, index) => (
-          <button
-            type="button"
-            key={tag.id}
-            className={`btn ${
-              activeIndex === index ? 'btn-primary' : 'btn-outline btn-primary'
-            } btn-sm text-white text-sm font-medium align-center`}
-            onClick={() => handleButtonClick(tag, index)}
-          >
-            {`#${tag}`}
-          </button>
+          <Tags
+            key={`tag-${tag}`}
+            clickTag={() => handleButtonClick(tag, index)}
+            isActive={activeIndex === index}
+            tag={tag}
+          />
         ))}
       </div>
     </div>

@@ -11,11 +11,12 @@ import DetailPage from './pages/DetailPage';
 import LeaderboardPage from './pages/LeaderboardPage';
 import { asyncPreloadProcess } from './states/isPreload/thunk';
 import { asyncUnsetAuthUser } from './states/authUser/thunk';
+import PageError from './pages/PageError';
 
 function App() {
-  const { authUser = null, isPreload = false } = useSelector(
-    (states) => states,
-  );
+  const authUser = useSelector((states) => states.authUser);
+  const isPreload = useSelector((states) => states.isPreload);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -57,7 +58,9 @@ function App() {
       </header>
       <main>
         <Routes>
+          <Route path="/*" element={<PageError />} />
           <Route path="/" element={<ThreadPage />} />
+          <Route path="/threads" element={<ThreadPage />} />
           <Route path="/leaderboards" element={<LeaderboardPage />} />
           <Route path="/threads/:threadId" element={<DetailPage />} />
         </Routes>

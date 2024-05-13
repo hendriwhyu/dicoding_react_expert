@@ -55,7 +55,7 @@ function Navigation({ authUser, signOut }) {
       <div className="navbar-end">
         {authUser !== null ? (
           <div className="flex gap-2">
-            <div className="dropdown dropdown-end">
+            <div className="avatar-menu dropdown dropdown-end">
               <div
                 tabIndex={0}
                 role="button"
@@ -63,7 +63,7 @@ function Navigation({ authUser, signOut }) {
               >
                 <div className="w-10 rounded-full">
                   <img
-                    alt="Tailwind CSS Navbar component"
+                    alt="Avatar Profile"
                     src={authUser?.avatar}
                   />
                 </div>
