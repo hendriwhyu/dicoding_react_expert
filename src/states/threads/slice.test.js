@@ -62,21 +62,23 @@ describe('threadReducers function', () => {
     const action = {
       type: 'threads/addThreads',
       payload: {
-        id: 'thread-2',
-        title: 'Bagaimana kehidupanmu?',
-        body: 'Coba ceritakan dong?',
-        category: 'real-life',
-        createdAt: '2024-05-29T07:55:52.266Z',
-        ownerId: 'user-1',
-        totalComments: 0,
-        upVotesBy: [],
-        downVotesBy: [],
+        thread: {
+          id: 'thread-2',
+          title: 'Bagaimana kehidupanmu?',
+          body: 'Coba ceritakan dong?',
+          category: 'real-life',
+          createdAt: '2024-05-29T07:55:52.266Z',
+          ownerId: 'user-1',
+          totalComments: 0,
+          upVotesBy: [],
+          downVotesBy: [],
+        },
       },
     };
 
     const nextState = threadsSlice(initalState, action);
 
-    expect(nextState).toEqual([action.payload, ...initalState]);
+    expect(nextState).toEqual([action.payload.thread, ...initalState]);
   });
   it('should add upVotesBy when given by TOGGLE_LIKE_THREAD action', () => {
     // arrange threads

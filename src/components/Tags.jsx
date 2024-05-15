@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function Tags({ isActive, clickTag, tag }) {
+function Tags({ clickTag, unclickTag, tag }) {
+  const [active, setActive] = useState(false);
+
+  const onClickTag = () => {
+    if (active === true) {
+      setActive(false);
+      unclickTag(tag);
+    } else {
+      setActive(true);
+      clickTag(tag);
+    }
+  };
+
   return (
     <button
       type="button"
       className={`btn ${
-        isActive ? 'btn-primary' : 'btn-outline btn-primary'
+        active === true ? 'btn-primary' : 'btn-outline btn-primary'
       } btn-sm text-white text-sm font-medium align-center`}
-      onClick={() => clickTag()}
+      onClick={() => onClickTag()}
     >
       {`#${tag}`}
     </button>
@@ -16,8 +28,8 @@ function Tags({ isActive, clickTag, tag }) {
 }
 
 Tags.propTypes = {
-  isActive: PropTypes.bool.isRequired,
   clickTag: PropTypes.func.isRequired,
+  unclickTag: PropTypes.func.isRequired,
   tag: PropTypes.string.isRequired,
 };
 

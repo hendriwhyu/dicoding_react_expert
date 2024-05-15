@@ -8,7 +8,7 @@ const threadsSlice = createSlice({
       return action.payload;
     },
     addThreads(state, action) {
-      return [action.payload, ...state];
+      return [action.payload.thread, ...state];
     },
     toggleLikeThread(state, action) {
       return state.map((thread) => {

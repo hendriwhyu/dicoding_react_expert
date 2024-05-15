@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import { toast } from 'react-toastify';
 import {
   addThreads,
   toggleDislikeThread,
@@ -16,8 +17,9 @@ const asyncAddThread = createAsyncThunk(
       dispatch(showLoading());
       const thread = await api.createThread({ title, body, category });
       dispatch(addThreads(thread));
+      toast.success('Thread created successfully');
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     } finally {
       dispatch(hideLoading());
     }

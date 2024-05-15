@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function Navigation({ authUser, signOut }) {
-  // const { id, name, email, avatar } = authUser;
   const { pathname } = useLocation();
 
   return (
@@ -48,7 +47,7 @@ function Navigation({ authUser, signOut }) {
             <Link to="/">Threads</Link>
           </li>
           <li>
-            <Link to="/leaderboards">Leaderboard</Link>
+            <Link to="/leaderboards">Leaderboards</Link>
           </li>
         </ul>
       </div>

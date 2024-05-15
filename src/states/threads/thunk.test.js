@@ -7,6 +7,7 @@ import {
   vi,
 } from 'vitest';
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import { toast } from 'react-toastify';
 import api from '../../utils/api';
 import {
   asyncAddThread,
@@ -86,16 +87,15 @@ describe('asyncAddThread thunk', () => {
 
     // mock
     const dispatch = vi.fn();
-
-    window.alert = vi.fn();
-
+    const mockToast = vi.fn();
+    toast.error = mockToast;
     // action
     await asyncAddThread(fakeCreateThreadsResponse)(dispatch);
 
     // assert
     expect(dispatch).toHaveBeenCalledWith(showLoading());
     expect(dispatch).toHaveBeenCalledWith(hideLoading());
-    expect(window.alert).toHaveBeenCalledWith(fakeErrorResponse.message);
+    expect(mockToast).toHaveBeenCalledWith(fakeErrorResponse.message);
   });
 });
 

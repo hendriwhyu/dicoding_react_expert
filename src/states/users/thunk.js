@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import { toast } from 'react-toastify';
 import api from '../../utils/api';
 
 const asyncRegisterUser = createAsyncThunk(
@@ -9,9 +10,10 @@ const asyncRegisterUser = createAsyncThunk(
     try {
       dispatch(showLoading());
       await api.register({ name, email, password });
+      toast.success('Register success');
       return { error: null };
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
       throw error;
     } finally {
       dispatch(hideLoading());

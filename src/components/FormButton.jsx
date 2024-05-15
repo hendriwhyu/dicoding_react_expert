@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { useDispatch } from 'react-redux';
+import Modal from 'react-modal';
 import FormModal from './FormModal';
+import { asyncAddThread } from '../states/threads/thunk';
 
 function FormButton() {
+  const [modal, setModal] = useState(false);
+  const dispatch = useDispatch();
+
   const showModal = () => {
-    document.getElementById('form_modal').showModal();
+    setModal(true);
+  };
+  const hideModal = () => {
+    setModal(false);
+  };
+
+  const formSubmitHandler = ({ title, category, body }) => {
+    dispatch(asyncAddThread({ title, category, body }));
+    hideModal();
   };
   return (
     <div className="fixed bottom-10 right-10">
@@ -15,7 +29,14 @@ function FormButton() {
       >
         <AiOutlinePlus />
       </button>
-      <FormModal />
+      <Modal
+        ariaHideApp={false}
+        className="text-center items-center h-full place-content-center flex"
+        isOpen={modal}
+        onRequestClose={hideModal}
+      >
+        <FormModal hideModal={hideModal} submitHandler={formSubmitHandler} />
+      </Modal>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import { toast } from 'react-toastify';
 import {
   addComentThreadDetail,
   clearThreadDetail,
@@ -77,8 +78,9 @@ const asyncAddCommentThreadDetail = createAsyncThunk(
       dispatch(showLoading());
       const commentThread = await api.createComment(threadId, content);
       dispatch(addComentThreadDetail(commentThread));
+      toast.success('Comment created successfully');
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     } finally {
       dispatch(hideLoading());
     }

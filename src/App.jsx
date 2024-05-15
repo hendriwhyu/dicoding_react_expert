@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './styles/style.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Loading from './components/Loading';
 import Navigation from './components/Navigation';
 import RegisterPage from './pages/RegisterPage';
@@ -12,6 +13,7 @@ import LeaderboardPage from './pages/LeaderboardPage';
 import { asyncPreloadProcess } from './states/isPreload/thunk';
 import { asyncUnsetAuthUser } from './states/authUser/thunk';
 import PageError from './pages/PageError';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const authUser = useSelector((states) => states.authUser);
@@ -46,6 +48,7 @@ function App() {
             <Route path="/leaderboards" element={<LeaderboardPage />} />
             <Route path="/register" element={<RegisterPage />} />
           </Routes>
+          <ToastContainer />
         </main>
       </div>
     );
@@ -64,6 +67,7 @@ function App() {
           <Route path="/leaderboards" element={<LeaderboardPage />} />
           <Route path="/threads/:threadId" element={<DetailPage />} />
         </Routes>
+        <ToastContainer />
       </main>
     </div>
   );
