@@ -9,11 +9,13 @@ function ThreadsList(props) {
     dislike,
     neutralLike,
   } = props;
+
   return (
     <div className="thread-list mb-20 max-w-xl flex flex-col items-start gap-10">
-      {threads?.map((thread) => (
+      {threads?.map((thread, index) => (
         <ThreadItem
           key={thread.id}
+          index={index}
           {...thread}
           like={like}
           dislike={dislike}

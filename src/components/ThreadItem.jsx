@@ -8,11 +8,13 @@ import {
 import { BsReply } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 import parser from 'html-react-parser';
 import { postedAt } from '../utils';
 
 function ThreadItem(props) {
   const {
+    index,
     id,
     title,
     body,
@@ -31,6 +33,15 @@ function ThreadItem(props) {
   const isThreadDisliked = downVotesBy?.includes(authUser);
 
   const navigate = useNavigate();
+  const direction = index % 2 === 0 ? 'left' : 'right';
+  const variants = {
+    hidden: { opacity: 0, x: direction === 'left' ? -100 : 100 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.5 },
+    },
+  };
 
   const onLikeClick = (event) => {
     event.stopPropagation();
@@ -56,7 +67,11 @@ function ThreadItem(props) {
     }
   };
   return (
-    <div
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={variants}
+      whileHover={{ scale: 1.1 }}
       role="button"
       tabIndex={0}
       className="card w-full shadow-md mt-5"
@@ -108,7 +123,7 @@ function ThreadItem(props) {
           </span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -133,6 +148,7 @@ export const threadItemShape = {
 };
 
 ThreadItem.propTypes = {
+  index: PropTypes.number.isRequired,
   ...threadItemShape,
   like: PropTypes.func.isRequired,
   dislike: PropTypes.func.isRequired,

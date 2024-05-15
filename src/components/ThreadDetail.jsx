@@ -4,6 +4,7 @@ import {
 } from 'react-icons/bi';
 import PropTypes from 'prop-types';
 import parser from 'html-react-parser';
+import { motion } from 'framer-motion'
 import { postedAt } from '../utils';
 
 function ThreadDetail(props) {
@@ -38,7 +39,7 @@ function ThreadDetail(props) {
     neutralLikeThread(id);
   };
   return (
-    <>
+    <div className='header-thread-detail'>
       <div className="flex flex-col items-center gap-2 mx-auto mb-5 self-center">
         <p className="text-md text-primary font-semibold">Diskusi</p>
         <h1 className="text-lg font-bold">{title}</h1>
@@ -50,7 +51,11 @@ function ThreadDetail(props) {
           <h3>{postedAt(createdAt)}</h3>
         </div>
       </div>
-      <div className="card shadow-md mt-2 mb-5 w-full">
+      <motion.div
+        className="card shadow-md mt-2 mb-5 w-full"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
         <div className="card-body flex flex-col items-start gap-5">
           <p>{body && parser(body)}</p>
           <div className="flex flex-row">
@@ -79,8 +84,8 @@ function ThreadDetail(props) {
             </button>
           </div>
         </div>
-      </div>
-    </>
+      </motion.div>
+    </div>
   );
 }
 

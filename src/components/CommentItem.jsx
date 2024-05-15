@@ -1,14 +1,10 @@
 import React from 'react';
-import {
-  BiDislike,
-  BiLike,
-  BiSolidDislike,
-  BiSolidLike,
-} from 'react-icons/bi';
+import { BiDislike, BiLike, BiSolidDislike, BiSolidLike } from 'react-icons/bi';
 import parser from 'html-react-parser';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 import { postedAt } from '../utils';
 import {
   asyncToggleDislikeComment,
@@ -18,6 +14,7 @@ import {
 
 function CommentItem(props) {
   const {
+    index,
     id,
     content,
     createdAt,
@@ -45,8 +42,24 @@ function CommentItem(props) {
 
   const isCommentLiked = upVotesBy?.includes(authUser?.id);
   const isCommentDisliked = downVotesBy?.includes(authUser?.id);
+
+  const direction = index % 2 === 0 ? 'left' : 'right';
+  const variants = {
+    hidden: { opacity: 0, x: direction === 'left' ? -100 : 100 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.5 },
+    },
+  };
   return (
-    <div className="card shadow-md mt-5 w-full">
+    <motion.div
+      className="card shadow-md mt-5 w-full"
+      initial="hidden"
+      animate="visible"
+      variants={variants}
+      whileHover={{ scale: 1.1 }}
+    >
       <div className="card-body flex flex-col items-start gap-5">
         <div className="flex items-start gap-5 self-stretch">
           <img
@@ -81,7 +94,7 @@ function CommentItem(props) {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -108,6 +121,7 @@ export const commentItemShape = {
 };
 
 CommentItem.propTypes = {
+  index: PropTypes.number.isRequired,
   ...commentItemShape,
   authUser: PropTypes.shape(userShape).isRequired,
 };

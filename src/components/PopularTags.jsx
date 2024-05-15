@@ -7,9 +7,10 @@ function PopularTags({ tags, clickTag, unclickTag }) {
     <div className="flex flex-col my-3 gap-2 max-w-xl">
       <p>Kategori Popular</p>
       <div className="flex flex-row gap-3 flex-wrap">
-        {tags?.values?.map((tag) => (
+        {tags?.values?.map((tag, index) => (
           <Tags
             key={`tag-${tag}`}
+            index={index}
             clickTag={clickTag}
             unclickTag={unclickTag}
             tag={tag}
