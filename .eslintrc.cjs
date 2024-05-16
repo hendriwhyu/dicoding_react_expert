@@ -5,7 +5,7 @@ module.exports = {
     node: true,
     'cypress/globals': true,
   },
-  extends: 'airbnb',
+  extends: ['airbnb', 'plugin:storybook/recommended'],
   overrides: [
     {
       env: {
