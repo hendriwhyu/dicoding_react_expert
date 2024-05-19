@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { RxCross2 } from 'react-icons/rx';
 import PropTypes from 'prop-types';
 import useInput from '../hooks/useInput';
+import Button from './Button';
 
 function FormModal({ hideModal, submitHandler }) {
   const [title, onChangeTitle] = useInput('');
@@ -66,13 +67,12 @@ function FormModal({ hideModal, submitHandler }) {
             onChange={bodyChangeHandler}
           />
         </div>
-        <button
+        <Button
           type="submit"
-          className="btn btn-outline btn-primary"
           onClick={formSubmitHandler}
-        >
-          Submit
-        </button>
+          outline
+          text="Submit"
+        />
       </form>
     </div>
   );

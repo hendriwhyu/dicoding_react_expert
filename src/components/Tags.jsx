@@ -8,6 +8,7 @@ function Tags(props) {
     clickTag,
     unclickTag,
     tag,
+    type,
   } = props;
   const [active, setActive] = useState(false);
 
@@ -19,6 +20,15 @@ function Tags(props) {
       setActive(true);
       clickTag(tag);
     }
+  };
+
+  const background = {
+    primary: 'btn-primary',
+    secondary: 'btn-secondary',
+    success: 'btn-success',
+    danger: 'btn-error',
+    warning: 'btn-warning',
+    info: 'btn-info',
   };
 
   const variants = {
@@ -36,7 +46,7 @@ function Tags(props) {
     <motion.button
       type="button"
       className={`btn ${
-        active === true ? 'btn-primary' : 'btn-outline btn-primary'
+        active === true ? `${background[type]}` : `btn-outline ${background[type]}`
       } btn-sm text-white text-sm font-medium align-center`}
       onClick={() => onClickTag()}
       initial="hidden"
@@ -55,6 +65,14 @@ Tags.propTypes = {
   clickTag: PropTypes.func.isRequired,
   unclickTag: PropTypes.func.isRequired,
   tag: PropTypes.string.isRequired,
+  type: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info',
+  ]).isRequired,
 };
 
 export default Tags;

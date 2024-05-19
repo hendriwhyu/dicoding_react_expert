@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import './styles/style.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -14,6 +13,7 @@ import { asyncPreloadProcess } from './states/isPreload/thunk';
 import { asyncUnsetAuthUser } from './states/authUser/thunk';
 import PageError from './pages/PageError';
 import 'react-toastify/dist/ReactToastify.css';
+import './styles/style.css';
 
 function App() {
   const authUser = useSelector((states) => states.authUser);

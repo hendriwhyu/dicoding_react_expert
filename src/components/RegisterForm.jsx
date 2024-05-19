@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import useInput from '../hooks/useInput';
+import Button from './Button';
 
 function RegisterForm({ register }) {
   const [name, onNameChange] = useInput('');
@@ -46,13 +47,7 @@ function RegisterForm({ register }) {
         />
       </div>
       <div>
-        <button
-          type="button"
-          className="btn btn-block btn-primary text-white mb-2"
-          onClick={() => register({ name, email, password })}
-        >
-          Sign Up
-        </button>
+        <Button onClick={() => register({ name, email, password })} text="Sign Up" />
       </div>
       <span>
         Already have an account ?

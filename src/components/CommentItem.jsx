@@ -1,5 +1,7 @@
 import React from 'react';
-import { BiDislike, BiLike, BiSolidDislike, BiSolidLike } from 'react-icons/bi';
+import {
+  BiDislike, BiLike, BiSolidDislike, BiSolidLike,
+} from 'react-icons/bi';
 import parser from 'html-react-parser';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router';

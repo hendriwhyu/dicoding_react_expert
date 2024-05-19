@@ -4,7 +4,7 @@ import {
 } from 'react-icons/bi';
 import PropTypes from 'prop-types';
 import parser from 'html-react-parser';
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 import { postedAt } from '../utils';
 
 function ThreadDetail(props) {
@@ -39,7 +39,7 @@ function ThreadDetail(props) {
     neutralLikeThread(id);
   };
   return (
-    <div className='header-thread-detail'>
+    <div className="header-thread-detail">
       <div className="flex flex-col items-center gap-2 mx-auto mb-5 self-center">
         <p className="text-md text-primary font-semibold">Diskusi</p>
         <h1 className="text-lg font-bold">{title}</h1>

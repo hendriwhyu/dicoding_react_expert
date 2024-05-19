@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import useInput from '../hooks/useInput';
+import Button from './Button';
 
 function LoginForm({ login }) {
   const [email, onEmailChange] = useInput('');
@@ -37,13 +38,7 @@ function LoginForm({ login }) {
         />
       </div>
       <div>
-        <button
-          type="button"
-          className="btn btn-block btn-primary text-white mb-2"
-          onClick={() => login({ email, password })}
-        >
-          Login
-        </button>
+        <Button onClick={() => login({ email, password })} text="Login" />
       </div>
       <span>
         Not have an account ?

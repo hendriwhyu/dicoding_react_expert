@@ -152,6 +152,7 @@ ThreadItem.propTypes = {
   ...threadItemShape,
   like: PropTypes.func.isRequired,
   dislike: PropTypes.func.isRequired,
+  neutralLike: PropTypes.func.isRequired,
 };
 
 export default ThreadItem;

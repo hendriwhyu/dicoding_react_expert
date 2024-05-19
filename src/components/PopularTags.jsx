@@ -14,6 +14,7 @@ function PopularTags({ tags, clickTag, unclickTag }) {
             clickTag={clickTag}
             unclickTag={unclickTag}
             tag={tag}
+            type="primary"
           />
         ))}
       </div>
