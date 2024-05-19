@@ -35,7 +35,7 @@ describe('login spec', () => {
     cy.get('input[placeholder="Email Address"]').type('hendriwp123@gmail.com');
     // click login button without typing password
     cy.get('button')
-      .contains(/^Login$/)
+      .contains(/^login$/)
       .click();
 
     // verified window alert for show message from API
