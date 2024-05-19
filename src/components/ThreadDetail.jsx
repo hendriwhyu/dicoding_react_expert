@@ -54,7 +54,6 @@ function ThreadDetail(props) {
       <motion.div
         className="card shadow-md mt-2 mb-5 w-full"
         whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
       >
         <div className="card-body flex flex-col items-start gap-5">
           <p>{body && parser(body)}</p>
